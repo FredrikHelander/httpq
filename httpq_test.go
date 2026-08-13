@@ -68,12 +68,12 @@ func TestPublishAndConsume(t *testing.T) {
 
 	const msg = "hello 1"
 	var (
-		wg       sync.WaitGroup
-		gotBody  string
-		gotCode  int
-		pubCode  int
-		pubErr   error
-		consErr  error
+		wg      sync.WaitGroup
+		gotBody string
+		gotCode int
+		pubCode int
+		pubErr  error
+		consErr error
 	)
 
 	wg.Add(2)

@@ -1,11 +1,11 @@
 package main
 
 import (
-	"net/http"
-	"time"
-	"sync"
-	"io"
 	"encoding/json"
+	"io"
+	"net/http"
+	"sync"
+	"time"
 
 	"github.com/go-chi/chi"
 )
@@ -13,7 +13,7 @@ import (
 const timeout = 10 * time.Second
 
 type HTTPQ struct {
-	mu 		 sync.Mutex
+	mu       sync.Mutex
 	topics   map[string]chan []byte
 	Timeout  time.Duration
 	RxBytes  int // number of bytes (message body) consumed
@@ -38,7 +38,6 @@ func (h *HTTPQ) timeout() time.Duration {
 }
 
 // topic returns the channel for a topic name, creating it if needed.
-// The mutex only protects the map — never hold it while sending/receiving on ch.
 func (h *HTTPQ) topic(name string) chan []byte {
 	h.mu.Lock()
 	defer h.mu.Unlock()
